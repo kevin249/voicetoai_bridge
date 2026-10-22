@@ -109,7 +109,7 @@ class MainActivity : Activity() {
             }
         })
         controls.addView(text("进入 AI 对话后，桥接会释放麦克风并暂停。对话结束后，点通知回到这里恢复监听。锁屏状态不会自动解锁。", 13, muted).apply { setPadding(0, dp(12), 0, 0) })
-        page.addView(text("本地处理，不保存录音，不读取或保存对话。此应用不含联网权限；AI 客户端按其自身规则使用网络。", 12, muted).apply { setPadding(0, dp(18), 0, 0) })
+        page.addView(text("本地处理，不保存录音或对话。自动操作时临时检查目标界面以定位按钮。此应用不含联网权限；AI 客户端按其自身规则使用网络。", 12, muted).apply { setPadding(0, dp(18), 0, 0) })
     }
 
     override fun onResume() {
@@ -138,7 +138,7 @@ class MainActivity : Activity() {
     private fun disclose(action: () -> Unit) {
         if (settings.disclosureAccepted) { action(); return }
         AlertDialog.Builder(this).setTitle("开启本地语音桥接")
-            .setMessage("监听期间，麦克风音频只在本机用于检测唤醒词，不保存、不上传。\n\n无障碍服务仅在你唤醒或测试时检查所配置 AI 应用的按钮并执行一次点击；学习时记录你亲手点击的控件 ID / 标签。它不负责自动登录、授权或发送文字。你可随时停止或在系统设置关闭服务。")
+            .setMessage("监听期间，麦克风音频只在本机用于检测唤醒词，不保存、不上传。\n\n无障碍服务仅在你唤醒或测试时临时读取所配置 AI 应用的无障碍界面，用于定位按钮并执行一次点击，不保存界面或对话。学习时记录你亲手点击的控件 ID / 标签。它不负责自动登录、授权或发送文字。你可随时停止或在系统设置关闭服务。")
             .setPositiveButton("同意并继续") { _, _ -> settings.disclosureAccepted = true; action() }
             .setNegativeButton("取消", null).show()
     }

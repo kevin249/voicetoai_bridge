@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">语音桥接</string>
-    <string name="accessibility_description">仅在你说出唤醒词或点按测试后，打开你配置的 AI 应用，并查找、点击其语音按钮。不读取或保存对话，不自动处理登录、授权或付款。你可以随时停止监听或关闭此服务。</string>
+    <string name="accessibility_description">仅在你说出唤醒词或点按测试后，打开你配置的 AI 应用，临时读取其无障碍界面以定位并点击语音按钮。不保存界面或对话，不自动处理登录、授权或付款。你可以随时停止监听或关闭此服务。</string>
     <style name="AppThemeBase" parent="android:style/Theme.Material.Light.NoActionBar">
         <item name="android:fontFamily">sans</item>
         <item name="android:colorAccent">#176B58</item>

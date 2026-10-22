@@ -34,7 +34,7 @@ class WakeService : Service() {
             stopSelf(); return START_NOT_STICKY
         }
         try {
-            if (Build.VERSION.SDK_INT >= 29) startForeground(NOTIFICATION, notification("正在准备"), ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE)
+            if (Build.VERSION.SDK_INT >= 30) startForeground(NOTIFICATION, notification("正在准备"), ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE)
             else startForeground(NOTIFICATION, notification("正在准备"))
             foreground = true
             if (intent.action == START) startListening() else testClient(intent.action == LEARN)

@@ -26,7 +26,7 @@
 人工诊断命令：
 
 ```bash
-adb install -r app/build/outputs/apk/debug/app-debug.apk
+adb install -r app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
 adb shell dumpsys package com.openai.chatgpt
 adb shell dumpsys package com.google.android.apps.bard
 adb shell dumpsys audio

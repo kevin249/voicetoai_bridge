@@ -56,10 +56,15 @@ class SherpaWakeEngine(private val context: Context) {
             return false
         } finally {
             // Order matters: release audio BEFORE reporting detection to the client launcher.
-            recorder?.let { runCatching { it.stop() }; it.release() }
-            stream?.release()
-            spotter?.release()
-            if (lock.isHeld) lock.release()
+            try {
+                recorder?.let { try { it.stop() } finally { it.release() } }
+            } finally {
+                try { stream?.release() } finally {
+                    try { spotter?.release() } finally {
+                        if (lock.isHeld) lock.release()
+                    }
+                }
+            }
         }
     }
 }

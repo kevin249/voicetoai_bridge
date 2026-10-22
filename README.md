@@ -57,7 +57,7 @@ python3 tools/prepare_deps.py
 
 Windows 使用 `python tools/prepare_deps.py` 与 `gradlew.bat testDebugUnitTest lintDebug assembleDebug`。Android Studio 可直接打开本目录。
 
-APK：`app/build/outputs/apk/debug/app-debug.apk`。首次准备下载约 40 MB AAR 和 32 MB 模型归档并校验固定 SHA-256；后续复用缓存。只有所需模型进入 APK，下载发生在构建时，应用不联网下载模型。
+APK 位于 `app/build/outputs/apk/debug/`：手机与 ARM 主板选 `app-arm64-v8a-debug.apk`；x86 模拟器选 `app-x86_64-debug.apk`。按架构拆包，避免让手机携带模拟器 native 库。首次准备下载约 40 MB AAR 和 32 MB 模型归档并校验固定 SHA-256；后续复用缓存。只有所需模型进入 APK，下载发生在构建时，应用不联网下载模型。
 
 GitHub Actions 的 **Android APK** 工作流会执行测试、Lint、构建，产物名为 `voicetoai-bridge-debug`，下载解压后安装 APK。debug 签名仅适合测试；不同环境 debug 密钥可能不同，升级签名冲突时需卸载旧版（会清除配置）。正式分发需单独管理 release 签名。
 
